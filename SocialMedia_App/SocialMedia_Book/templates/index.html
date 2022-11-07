@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Book</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abel&family=Fasthand&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+/* UTILITY */
+.FF-FH{
+    font-family: 'Fasthand', cursive;
+}
+
+.FF-Ab{
+    font-family: 'Abel', sans-serif;
+}
+
+/*  */
+
+.BG{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 375px;
+
+    background-image: linear-gradient(to right, rgb(59, 56, 56), black);
+    color: white;
+
+    align-items: center;
+}
+
+.item1 h3 {
+    font-size: 2rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    text-align: center;
+}
+
+.item1 h1 {
+    font-size: 7rem;
+    margin-top: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.item2 form {
+    min-width: 50vw;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.item2 form input {
+    font-size: 1.8rem;
+    margin:1rem;
+}
+
+.item2 form fieldset {
+    background-color: black;
+    opacity: 0.75;
+    border: 2px solid gray;
+    border-left: none;
+    border-top: none;
+}
+
+.Signup,
+.Signin,
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.buttons a {
+    text-decoration: none;
+    font-size: 5rem;
+    color: white;
+    border: 2px solid white;
+    border-radius: 1rem;
+    border-bottom-color:gray;
+    border-right-color: gray;
+    margin: 1rem;
+}
+    </style>
+</head>
+
+<body>
+    <div class="BG FF-Ab">
+
+        <header class="item1">
+                <h3 class="FF-FH">Welcome to</h3>
+                <h1 class="FF-FH">Social Book</h1>
+        </header>
+
+        <main class="item2">
+            <section class="buttons" id="buttons">
+                <a href="#Form1">Sign Up</a>
+                <a href="#Form2">Sign In</a>
+            </section>
+
+            <section class="Signup" id="Form1">
+                <form action="http://127.0.0.1:8000/signup/" method="post" class="FF-Ab">
+                    {% csrf_token %}
+                    <fieldset>
+                        <legend>
+                            <p>Sign Up</p>
+                        </legend>
+
+                        <label for="Name">Name:</label>
+                        <input type="text" name="Name" id="Name" required>
+                        <br>
+                        <label for="Email">Email:</label>
+                        <input type="email" name="Email" id="Email" required>
+                        <br>
+                        <label for="DOB">Date of Birth:</label>
+                        <input type="date" name="DOB" id="DOB" required>
+                        <br>
+                        <label for="Password">Password:</label>
+                        <input type="password" name="Password" id="Password" required>
+                        <br>
+                        <input type="submit" value="Create Account">
+                    </fieldset>
+                </form>
+            </section>
+            <br>
+            <br>
+            <br>
+            <section class="Signin FF-Ab" id="Form2">
+                <form action="http://127.0.0.1:8000/signin/" method="post">
+                    {% csrf_token %}
+                    <fieldset>
+                        <legend>
+                            <p>Sign In</p>
+                        </legend>
+
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email">
+                        <br>
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password">
+                        <br>
+                        <input type="submit" value="Sign In">
+                    </fieldset>
+                </form>
+            </section>
+
+            <section class="buttons">
+                <a href="#">Bck to Top</a>
+            </section>
+        </main>
+
+        <footer class="item3"></footer>
+    </div>
+
+</body>
+</html>
